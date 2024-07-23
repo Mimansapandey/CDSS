@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>age1</title>
+	<style>
+		body {
+			background-image: url('{{ url_for("static", filename="img.png") }}');
+			background-size: cover;
+			background-position: center;
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			font-family: sans-serif;
+			color: #fff;
+			text-align: center;
+			position: relative;
+			padding: 20px;
+			box-sizing: border-box;
+		}
+
+		body::before,
+		body::after {
+			content: "";
+			position: absolute;
+			top: -20px;
+			left: -20px;
+			right: -20px;
+			bottom: -20px;
+			z-index: -1;
+		}
+
+		body::before {
+			background-image: url('{{ url_for("static", filename="img.png") }}');
+			background-size: cover;
+			background-position: center;
+			filter: blur(5px) brightness(0.6) saturate(1.2);
+		}
+
+		body::after {
+			background-color: rgba(138, 29, 93, 0.2);
+			border: 5px solid rgba(138, 29, 93, 0.2);
+		}
+
+		.box {
+			background-color: rgba(255, 255, 255, 0.8);
+			padding: 20px;
+			border-radius: 20px;
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+			max-width: 80%;
+			margin: 0 auto;
+			text-align: left;
+		}
+
+		h1 {
+			margin-top: 0;
+			font-size: 2rem;
+			font-weight: bold;
+			color: #4a4a4a;
+		}
+
+		label {
+			display: block;
+			margin: 1rem 0;
+			font-size: 1.5rem;
+			color: #000;
+		}
+
+		button {
+			background-color: #24a0ed;
+			color: #fff;
+			padding: 0.25rem 0.75rem;
+			border: none;
+			border-radius: 5px;
+			font-size: 1.2rem;
+			cursor: pointer;
+			margin-top: 1rem;
+			float: right;
+		}
+
+		button:hover {
+			background-color: #0e6ab1; /* change the button background color to a darker shade of blue when hovering over it */
+		}
+
+
+	</style>
+</head>
+<body>
+	<div class="box">
+    	<h1>How old is the Patient?</h1>
+		<form method="POST" action="{{ url_for('age1_page')}}">
+        	<label><input type="radio" name="age1" value="12+"><span style="font-size: 1.16rem;">12 years to 17 years</span></label>
+        	<label><input type="radio" name="age1" value="under11"><span style="font-size: 1.16rem;">1 month to 11 years</span></label>
+        	<button class="btn-next" type="submit">Next</button>
+		</form>
+	</div>
+
+</body>
+</html>
+
+
